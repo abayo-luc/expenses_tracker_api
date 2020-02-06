@@ -1,9 +1,6 @@
-import {
-    Router
-} from 'express'
-import MainController from '../controllers/main'
-const routers = Router()
+import { Router } from 'express';
+import transRouters from './transactions.router';
+const routers = Router();
 
-routers.get('/', MainController.home)
-
-export default routers
+routers.use(transRouters);
+export default routers;
