@@ -1,4 +1,0 @@
-@BASE_URL = {{$dotenv BASE_URL}}
-
-GET {{BASE_URL}}
-Content-Type: application/json

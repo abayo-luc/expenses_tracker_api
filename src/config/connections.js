@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
 dotenv.config();
-const URL = process.env.CONNECTION_STRING || 'mongodb://localhost/NODE_APP';
+const URL = process.env.MONGODB_URI || 'mongodb://localhost/NODE_APP';
 
 mongoose.connect(URL, {
 	useNewUrlParser: true,
@@ -16,5 +16,5 @@ db.on('error', () => {
 });
 
 db.on('open', () => {
-	console.log('Connection established');
+	console.log('DB Connection established');
 });

@@ -1,0 +1,17 @@
+@BASE_URL = {{$dotenv BASE_URL}}
+
+GET {{BASE_URL}}/transactions
+Content-Type: application/json
+
+
+###
+
+POST {{BASE_URL}}/transactions
+Content-Type: application/json
+
+{ "title": "TV Subscription", "amount": 5000, "date":"02-03-2019"}
+
+###
+
+DELETE {{BASE_URL}}/transactions/5e3c1ab9471a9c8bbadaa6e7
+Content-Type: application/json
