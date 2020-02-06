@@ -4,7 +4,7 @@ class TransactionsController {
 	static async index(_req, res) {
 		try {
 			const data = await transactions.find();
-			return res.status(200).json({ data });
+			return res.status(200).json({ transactions: data });
 		} catch (error) {
 			return res.status(400).json({ error: error.message });
 		}
@@ -13,12 +13,12 @@ class TransactionsController {
 		try {
 			const { title, amount, date: dateTime } = req.body;
 			const { date } = isValidDate(dateTime);
-			const data = await transactions.create({
+			const transaction = await transactions.create({
 				title,
 				amount,
 				date: date
 			});
-			return res.status(201).json({ data });
+			return res.status(201).json({ transaction });
 		} catch (error) {
 			return res.status(400).json({ error: error.message });
 		}
@@ -28,14 +28,10 @@ class TransactionsController {
 			const { id } = req.params;
 			const { n } = await transactions.deleteOne({ _id: id });
 			if (!n) {
-				return res
-					.status(404)
-					.json({ data: { message: 'Transactions not found' } });
+				return res.status(404).json({ message: 'Transactions not found' });
 			}
 			return res.status(200).json({
-				data: {
-					message: 'Transactions deleted'
-				}
+				message: 'Transactions deleted'
 			});
 		} catch (error) {
 			return res.status(400).json({ error: error.message });

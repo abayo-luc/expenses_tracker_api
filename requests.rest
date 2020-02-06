@@ -13,5 +13,5 @@ Content-Type: application/json
 
 ###
 
-DELETE {{BASE_URL}}/transactions/5e3c1ab9471a9c8bbadaa6e7
+DELETE {{BASE_URL}}/transactions/5e3c1b77f0cf528c33dd2a22
 Content-Type: application/json
