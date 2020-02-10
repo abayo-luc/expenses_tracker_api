@@ -1,5 +1,6 @@
-import mongoose from 'mongoose';
-const schema = new mongoose.Schema(
+import mongoose, { Schema } from 'mongoose';
+
+const schema = new Schema(
 	{
 		title: {
 			type: String,
@@ -12,11 +13,11 @@ const schema = new mongoose.Schema(
 		date: {
 			type: Date,
 			required: true
-		}
+		},
+		category: { type: mongoose.Types.ObjectId, ref: 'Categories' }
 	},
 	{
 		timestamps: true
 	}
 );
-
 export default mongoose.model('Transactions', schema);

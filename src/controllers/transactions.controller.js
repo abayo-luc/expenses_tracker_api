@@ -15,6 +15,7 @@ class TransactionsController {
 							.format()
 					}
 				})
+				.populate('category', 'name description')
 				.sort({ createdAt: 'desc' });
 			return res.status(200).json({ transactions: data });
 		} catch (error) {
@@ -23,12 +24,14 @@ class TransactionsController {
 	}
 	static async create(req, res) {
 		try {
+			const { id: categoryId } = req.params;
 			const { title, amount, date: dateTime } = req.body;
 			const { date } = isValidDate(dateTime);
 			const transaction = await transactions.create({
 				title,
 				amount,
-				date: date
+				date: date,
+				category: categoryId
 			});
 			return res.status(201).json({ transaction });
 		} catch (error) {

@@ -6,12 +6,31 @@ Content-Type: application/json
 
 ###
 
-POST {{BASE_URL}}/transactions
+POST {{BASE_URL}}/categories/5e412d0292f32b18a6410101/transactions
 Content-Type: application/json
 
-{ "title": "TV Subscription", "amount": 5000, "date":"02-03-2019"}
+{
+"title": "TV Subscription",
+"amount": 5000,
+"date":"02-03-2019"
+}
 
 ###
 
 DELETE {{BASE_URL}}/transactions/5e3c1b77f0cf528c33dd2a22
+Content-Type: application/json
+
+###
+GET {{BASE_URL}}/categories
+Content-Type: application/json
+
+###
+POST {{BASE_URL}}/categories
+Content-Type: application/json
+
+{"name":"Food & Drinks", "description":"Mony that goes on food and drinks, other than eating out"}
+
+###
+
+DELETE {{BASE_URL}}/categories/5e412d0292f32b18a6410101
 Content-Type: application/json
