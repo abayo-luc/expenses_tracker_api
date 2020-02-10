@@ -1,9 +1,21 @@
 import transactions from '../modals/transactions';
 import isValidDate from '../utils/isValidDate';
+import moment from 'moment';
 class TransactionsController {
 	static async index(_req, res) {
 		try {
-			const data = await transactions.find();
+			const data = await transactions
+				.find({
+					createdAt: {
+						$gte: moment()
+							.startOf('month')
+							.format(),
+						$lte: moment()
+							.endOf('month')
+							.format()
+					}
+				})
+				.sort({ createdAt: 'desc' });
 			return res.status(200).json({ transactions: data });
 		} catch (error) {
 			return res.status(400).json({ error: error.message });
